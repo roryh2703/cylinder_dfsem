@@ -1,0 +1,10 @@
+#    script to change the velocity profile at the inlet
+
+sed -i -- 's/[0-9].*/0.5/g' L
+
+sed -i -- 's/( 0.1 0 0 )/( 0.195 0 0 )/g' U
+
+sed -i -- 's/(1 0 0 0 0 0)/(1e-5 0 0 0 0 0)/g' R
+
+
+

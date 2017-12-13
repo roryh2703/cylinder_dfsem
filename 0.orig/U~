@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "1";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0.195 0 0);
+
+boundaryField
+{
+    IN
+    {
+        type            turbulentDFSEMInlet;
+        delta           2;    //placeholder
+        nCellPerEddy    5;    //as suggested, any less and structures die
+        mapMethod       nearestCell;
+        value           $internalField;
+    }
+    OUT
+    {
+        type            inletOutlet;
+        inletValue      uniform (0 0 0);
+        value           uniform (0 0 0);
+    }
+    SYM1
+    {
+        type            symmetry;
+    }
+    SYM2
+    {
+        type            symmetry;
+    }
+    CYLINDERWALL
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    periodic1
+    {
+        type            cyclic;
+    }
+    periodic2
+    {
+        type            cyclic;
+    }
+}
+
+
+// ************************************************************************* //

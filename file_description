@@ -1,0 +1,8 @@
+seeds inlet with eddies
+
+
+
+
+- check processors being ran using:
+	clear && grep -r " 24 " && grep -r " 24;"
+
